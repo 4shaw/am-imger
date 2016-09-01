@@ -1,0 +1,25 @@
+<div layout-fill layout="column" layout-align="center center">
+    <div>
+        <div class="canvas-wr">
+            <canvas id="imger-canvas"></canvas>
+        </div>
+        <div layout="row" flex>
+            <div flex>
+                <md-slider-container>
+                    <md-slider ng-disabled="!imger.ready" min="0" max="100" ng-change="imger.updateCanvas()" ng-model="imger.scaleSlider" aria-label="scale" id="scale-slider"></md-slider>
+                </md-slider-container>
+            </div>
+            <div>
+                <md-button class="md-icon-button" ng-click="imger.initBrowse()">
+                    <md-icon>insert_photo</md-icon>
+                </md-button>
+                <md-button class="md-icon-button" ng-click="imger.done()">
+                    <md-icon>check_circle</md-icon>
+                </md-button>
+            </div>
+        </div>
+    </div>
+</div>
+
+<!--h1>IMGER UP AND RUNNING...</h1>
+{{imger.storeDetails | json}}-->

@@ -1,0 +1,14 @@
+{
+  "name": "imger",
+  "version": "1.0.0",
+  "description": "Angular Meteor image uploading",
+  "main": "index.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "author": "4SHAW",
+  "license": "MIT",
+  "dependencies": {
+    "mkdirp": "^0.5.1"
+  }
+}
