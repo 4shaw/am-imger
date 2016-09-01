@@ -1,5 +1,5 @@
 {
-  "name": "imger",
+  "name": "am-imger",
   "version": "0.0.1",
   "description": "Angular Meteor image uploading",
   "main": "index.js",
