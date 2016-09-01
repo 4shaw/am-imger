@@ -2,16 +2,13 @@ ImgerStore = new function () {
     var store = {};
 
     this.add = function(options) {
-        if(!_.isFunction(options)) {
-            console.log("ERROR expecting a named function");
-            return;
-        }
-
-        store[options.name] = options;
+        // TODO some checks
+        _.extend(store, options);
     };
 
     this.get = function(what) {
         //return store;
+        console.log(store);
         return store[what]();
     };
 };
