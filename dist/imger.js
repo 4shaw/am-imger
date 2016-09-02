@@ -14,7 +14,8 @@ require('../store');
                 template: t.default,
                 bindings: {
                     store: "@",
-                    complete: "&"
+                    complete: "&",
+                    send: "&"
                 },
                 require: {},
                 controllerAs: 'imger',
@@ -81,12 +82,19 @@ require('../store');
                     dataUrl = canvas[0].toDataURL(mime, quality),
                     data = {store: imger.store, blob: null, dataUrl: dataUrl};
 
+                if(imger.send) {
+                    //TODO checks
+                    data.send = imger.send();
+                    console.log("***", data);
+                }
+
                 if(!_.isUndefined($attrs.upload)) {
                     imger.call('imgerUpload', data, function (error, result) {
                         if(error) {
                             console.log("ERROR", error.reason);
                         }
                         else {
+                            data.response = result;
                             handleCallback(data);
                         }
                     });
@@ -117,7 +125,7 @@ require('../store');
 
             var handleCallback = function(data) {
                 if(imger.complete) {
-                    imger.complete({data: data});
+                    $scope.$apply(imger.complete({data: data}));
                 }
             };
 

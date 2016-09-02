@@ -30,7 +30,7 @@ if(Meteor.isServer) {
             var fs = require('fs'),
                 mkdirp = require('mkdirp');
 
-            var fullPath = base + '/' + path;
+            var fullPath = base + path;
 
             mkdirp(fullPath, function (err) {
                 if (err) throw new Meteor.Error(500, err);
@@ -95,14 +95,22 @@ if(Meteor.isServer) {
 
             if(result) {
                 var url = '/static' + path + '/' + fileName,
-                    insertId = insert(url, data.store, storeDetails);
+                    insertId = insert(url, data.store, storeDetails),
+                    response = {id: insertId, url: url};
 
-                if(storeDetails.server.onSaved) storeDetails.server.onSaved(insertId);
+                if(_.isFunction(storeDetails.server.onSaved)) {
+                    response.onSaved = storeDetails.server.onSaved(response, data.send);
+                    return response;
+                }
+                else {
+                    return response;
+                }
 
-                return {id: insertId, url: url};
+            }
+            else {
+                return result;
             }
 
-            return result;
         }
 
         Meteor.methods({
