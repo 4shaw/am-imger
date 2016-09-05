@@ -244,7 +244,7 @@ require('../store');
             }
         }
 
-        Imger.$inject = ['$scope', '$element', '$attrs', '$reactive'];
+        Imger.$inject = ['$scope', '$element', '$attrs', '$timeout', '$reactive'];
 
     })();
 
