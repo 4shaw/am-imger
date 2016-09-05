@@ -125,7 +125,9 @@ require('../store');
 
             var handleCallback = function(data) {
                 if(imger.complete) {
-                    $scope.$apply(imger.complete({data: data}));
+                    imger.complete({data: data});
+
+                    if(!$scope.$$phase) $scope.$apply();
                 }
             };
 
