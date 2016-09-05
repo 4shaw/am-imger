@@ -22,7 +22,7 @@ require('../store');
                 controller: Imger
             });
 
-        function Imger($scope, $element, $attrs, $reactive) {
+        function Imger($scope, $element, $attrs, $timeout, $reactive) {
 
             $reactive(this).attach($scope);
 
@@ -125,9 +125,9 @@ require('../store');
 
             var handleCallback = function(data) {
                 if(imger.complete) {
-                    imger.complete({data: data});
-
-                    if(!$scope.$$phase) $scope.$apply();
+                    $timeout(function() {
+                        imger.complete({data: data});
+                    });
                 }
             };
 

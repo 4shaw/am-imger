@@ -1,6 +1,6 @@
 {
   "name": "am-imger",
-  "version": "0.0.4",
+  "version": "0.0.5",
   "description": "Angular Meteor image uploading",
   "main": "index.js",
   "scripts": {
